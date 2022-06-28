@@ -8,6 +8,7 @@ import Contact from './views/Contact/Contact';
 import Settings from './views/Settings/Settings';
 import Crypto from './views/Crypto/Crypto';
 import Lesson from './views/Lesson/Lesson';
+import Transaction from "./views/Transaction/Transaction";
 import NotFound from './views/NotFound/NotFound';
 // Components
 import Sidebar from './components/Sidebar/Sidebar';
@@ -31,6 +32,8 @@ function App() {
           <Route path='crypto' element={<Explore />} />
           <Route path='/crypto/:symbol' element={<Crypto />} />
           <Route path='/learn/id/:lessonId' element={<Lesson />} />
+          <Route path="/transaction" element={<Transaction />} />
+          
           <Route path='*' element={<NotFound />} />
         </Routes>
       </div>

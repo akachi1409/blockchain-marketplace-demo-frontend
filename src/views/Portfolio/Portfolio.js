@@ -12,12 +12,13 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
+import Paper from '@mui/material/Paper';
+// import Button from '@mui/material/Button';
+// import Dialog from '@mui/material/Dialog';
+// import DialogActions from '@mui/material/DialogActions';
+// import DialogContent from '@mui/material/DialogContent';
+// import DialogContentText from '@mui/material/DialogContentText';
+// import DialogTitle from '@mui/material/DialogTitle';
 import { useNavigate } from 'react-router-dom';
 import {
   LineChart,
@@ -33,6 +34,7 @@ import axios from 'axios';
 
 function Portfolio() {
   const INTERVAL_OPTIONS = [30, 60, 90, 120];
+  const [cryptos, setCryptos] = useState([]);
   const [symbol, setSymbol] = useState('');
   const [data, setData] = useState(null);
   const [interval, setInterval] = useState(INTERVAL_OPTIONS[0]);
@@ -49,15 +51,34 @@ function Portfolio() {
       const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/assets`, {headers: authHeader});
       const data = res.data.assets;
       const isEmpty = Object.keys(data).length === 0;
-      if (isEmpty) {
-        setEmptyAssetDialogBox(true);
-      } 
-      else {
-        setEmptyAssetDialogBox(false);
-      }
+      // if (isEmpty) {
+      //   setEmptyAssetDialogBox(true);
+      // } 
+      // else {
+      //   setEmptyAssetDialogBox(false);
+      // }
+      axios.get('https://sandbox-api.coinmarketcap.com/v1/cryptocurrency/listings/latest', {
+        headers: {
+          'X-CMC_PRO_API_KEY': 'b54bcf4d-1bca-4e8e-9a24-22ff2c3d462c',
+        },
+      }).then((res) => console.log("res", res))
       setAssets(data);
     }
     getAssets();
+  }, []);
+
+  useEffect(() => {
+    async function getCryptos() {
+      try {
+        const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/crypto/explore?limit=100`);
+        const data = res.data.cryptos;
+        setCryptos(data);
+      } catch (err) {
+        console.log('Error fetching cryptos');
+        console.log(err);
+      }
+    }
+    getCryptos();
   }, []);
 
   useEffect(() => {
@@ -99,13 +120,13 @@ function Portfolio() {
       <div id="page-content">
         <Grid container spacing={2}>
 
-          <Grid item xs={12}>
+          {/* <Grid item xs={12}>
             <Typography variant='h5' textAlign={'center'}>
               My Assets
             </Typography>
-          </Grid>
+          </Grid> */}
 
-          <Dialog open={emptyAssetDialogBox}>
+          {/* <Dialog open={emptyAssetDialogBox}>
           <DialogTitle> Please Add Assets </DialogTitle>
           <DialogContent>
             <DialogContentText>
@@ -116,27 +137,39 @@ function Portfolio() {
           <DialogActions>
             <Button onClick={() => navigate('/explore')}>Explore Crypto</Button>
           </DialogActions>
-        </Dialog>
+        </Dialog> */}
 
-          <Grid item xs={0} md={3}/>
+          {/* <Grid item xs={0} md={3}/> */}
 
-          <Grid item xs={12} md={6}>
-            <TableContainer>
-              <Table>
+          <Grid item xs={12} md={12}>
+            <TableContainer component={Paper}>
+              <Table sx={{minWidth: 650}} aria-label="simple table">
                 <TableHead>
                   <TableRow>
                     <TableCell align="center">Asset</TableCell>
-                    <TableCell align="center">Amount</TableCell>
+                    <TableCell align="center">Quantity</TableCell>
+                    <TableCell align="center">Market Price</TableCell>
+                    <TableCell align="center">Total Value</TableCell>
+                    <TableCell align="center">Total Value(%)</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {symbols.map((symbol, i) => (
+                  {cryptos.map((item, i) => (
                     <TableRow key={i}>
                       <TableCell align='center'>
-                        <Link href={`/crypto/${symbol}`}>{symbol}</Link>
+                        <Link href={`/crypto/${item.symbol}`}>{item.symbol}</Link>
                       </TableCell>
                       <TableCell align='center'>
-                        {assets[symbol]}
+                        {item.supply}
+                      </TableCell>
+                      <TableCell align='center'>
+                        {item.price}
+                      </TableCell>
+                      <TableCell align='center'>
+                        {item.volume}
+                      </TableCell>
+                      <TableCell align='center'>
+                        {item.volumeP}
                       </TableCell>
                     </TableRow>
                   ))}
@@ -145,7 +178,7 @@ function Portfolio() {
             </TableContainer>
           </Grid>
 
-          <Grid item xs={0} md={3}/>
+          {/* <Grid item xs={0} md={3}/> */}
 
           <Grid item xs={12}>
             <Typography variant='h5' textAlign={'center'}>

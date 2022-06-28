@@ -8,6 +8,7 @@ import ExploreIcon from '@mui/icons-material/Explore';
 import SchoolIcon from '@mui/icons-material/School';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import SettingsIcon from '@mui/icons-material/Settings';
+import HistoryIcon from '@mui/icons-material/History';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 function Sidebar() {
@@ -78,6 +79,17 @@ function Sidebar() {
           </Grid>
           <Grid item>
             <Typography variant='body1' className="subItem">Settings</Typography>
+          </Grid>
+        </Grid>
+      </Grid>    
+
+      <Grid id="transaction" className="menu-item" >
+        <Grid container spacing={1} onClick={() => navigate('/transaction')}>
+          <Grid item>
+            <HistoryIcon />
+          </Grid>
+          <Grid item>
+            <Typography variant='body1' className="subItem">Transaction</Typography>
           </Grid>
         </Grid>
       </Grid>     
