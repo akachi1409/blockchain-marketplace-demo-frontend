@@ -9,9 +9,11 @@ import TextField from '@mui/material/TextField';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Login() {
-
+  const notify = () => toast("Wow so easy!");
   let navigate = useNavigate();
 
   const [response, setResponse] = useState({});
@@ -31,7 +33,7 @@ function Login() {
       username: evt.target.username.value,
       password: evt.target.password.value
     }
-
+    
     axios
     .post(`${process.env.REACT_APP_BACKEND_URL}/auth/login`, credentials)
     .then((res) => {
@@ -109,6 +111,7 @@ function Login() {
               Invalid Username or Password. Please Try Again.
           </Alert>
         </Snackbar>
+        <ToastContainer />
       </Grid>
     </>
   );
