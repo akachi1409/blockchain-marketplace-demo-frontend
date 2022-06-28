@@ -1,0 +1,13 @@
+#search-button {
+  height: 2.1em;
+  width: 60%;
+}
+
+#explore-search {
+  width:100%;
+  height: 56px;
+}
+
+#sort-select {
+  text-align: center;
+}

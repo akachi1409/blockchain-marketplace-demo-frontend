@@ -1,0 +1,32 @@
+.lessonHeader {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 2vh;
+}
+
+#lesson-content {
+    text-align: justify;
+}
+
+#map-button {
+    display: flex;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    flex-direction: row;
+    height: 2.2em;
+    height: fit-content;
+}
+
+#map-button button{
+    margin-left: auto;
+    margin-right: auto;
+    height: 10em;
+    width: 10em;
+    border-radius: 50%;
+    border: 0;
+    background-color: #B7CADB;
+    color: #514e58;
+    font-weight: bold;
+    font-size: 1.1em;
+    cursor: pointer;
+}

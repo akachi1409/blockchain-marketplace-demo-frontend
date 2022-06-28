@@ -1,0 +1,36 @@
+.articleSmall {
+    margin-top: 3vh;
+    border: solid white;
+    border-radius: 16px;
+}
+
+.articleSmall:hover{
+    background-color: rgb(221, 221, 221);
+}
+
+.articleSmallPicture {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.articleSmallPicture img {
+    max-width: 100%;
+    min-width: 100%;
+}
+
+.articleSmallTitle {
+    text-align: center;
+}
+
+.articleSmallSummary {
+    text-align: justify;
+}
+
+
+.articleSourceChip:hover{
+    cursor: pointer;
+    background-color: #37aadf;
+    color: rgb(255, 255, 255);
+}

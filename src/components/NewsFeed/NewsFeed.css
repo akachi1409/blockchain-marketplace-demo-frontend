@@ -1,0 +1,16 @@
+#feed-header {
+    text-align: center;
+}
+
+#feed-button {
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+.toTopButton {
+    width: 100%;
+}
+
+#infinite-scroll {
+    display: none;
+}

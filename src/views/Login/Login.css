@@ -1,0 +1,41 @@
+.formContainer {
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.formSurrounds {
+    display: block;
+    background-color: #383c47;
+}
+
+.formVertical {
+    height: 5%;
+}
+
+.formMiddle {
+    width: 100vw;
+    height: 90vh;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.formBody {
+    width: 60%;
+    height: 100%;
+    border: 5px rgb(193, 180, 104) solid;
+}
+
+.appLogo {
+    width: 100%;
+}
+
+.appLogo img {
+    max-width: 90%;
+}
+
+.credentials {
+    width: 90%;
+}

@@ -1,0 +1,43 @@
+#page-title {
+  display: flex;
+  flex-direction: column;
+  height: 10vh;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  background-color: #383c47;
+  color: #d1d1d1;
+  font-size: 2.3em;
+  align-items: center;
+  font-weight: bold;
+  justify-content: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#page-content {
+  margin-top: 13vh;
+  margin-left: 8%;
+  margin-right: 8%;
+  color: rgb(52, 49, 49);
+}
+
+#page-wrap {
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.page-button {
+  min-width: 300px;
+  max-width: 400px;
+  border: 1px solid #94A3B8;
+  cursor: pointer;
+}
+
+.divider {
+  display: flex;
+  background-color: rgb(78, 75, 75);
+  height: 1px;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}

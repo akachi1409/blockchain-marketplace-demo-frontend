@@ -1,0 +1,30 @@
+.mapButton {
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    color: #514e58;
+    font-weight: bold;
+    border-color: #373a47;
+    border-width: thick;
+}
+
+.color1 {
+    background-color: #d2cbdc;
+}
+
+.color2 {
+    background-color: #e6b5b6;
+}
+
+.color3 {
+    background-color: #d3eaf5;
+}
+
+.color4 {
+    background-color: #B7CADB;
+}
