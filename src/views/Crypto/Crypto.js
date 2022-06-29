@@ -62,6 +62,7 @@ function Crypto() {
       try {
         const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/crypto/data/${symbol}`);
         const data = res.data.cryptoData;
+        console.log("data", data);
         setCoinData(data);
       } catch (err) {
         navigate('/notfound');
@@ -71,6 +72,7 @@ function Crypto() {
       try {
         const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/crypto/info/${symbol}`);
         const data = res.data.cryptoInfo;
+        // console.log("data", data);
         setCoinInfo(data.description);
       } catch (err) {
         console.log('Error fetching info');

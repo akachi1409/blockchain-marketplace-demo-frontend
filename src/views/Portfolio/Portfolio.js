@@ -39,6 +39,7 @@ function Portfolio() {
   const [data, setData] = useState(null);
   const [interval, setInterval] = useState(INTERVAL_OPTIONS[0]);
   const [assets, setAssets] = useState({});
+  const [assetsPrice, setAssetsPrice] = useState({})
   const [symbols, setSymbols] = useState([]);
   const [minTick, setMinTick] = useState(0);
   const [maxTick, setMaxTick] = useState(0);
@@ -49,20 +50,17 @@ function Portfolio() {
   useEffect(() => {
     async function getAssets() {
       const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/assets`, {headers: authHeader});
-      const data = res.data.assets;
+      const data = res.data;
+      // console.log("data:", data);
+      setAssets(data.assets);
+      setAssetsPrice(data.assetsPrice)
       const isEmpty = Object.keys(data).length === 0;
-      // if (isEmpty) {
-      //   setEmptyAssetDialogBox(true);
-      // } 
-      // else {
-      //   setEmptyAssetDialogBox(false);
-      // }
-      axios.get('https://sandbox-api.coinmarketcap.com/v1/cryptocurrency/listings/latest', {
-        headers: {
-          'X-CMC_PRO_API_KEY': 'b54bcf4d-1bca-4e8e-9a24-22ff2c3d462c',
-        },
-      }).then((res) => console.log("res", res))
-      setAssets(data);
+      if (isEmpty) {
+        setEmptyAssetDialogBox(true);
+      } 
+      else {
+        setEmptyAssetDialogBox(false);
+      }
     }
     getAssets();
   }, []);
@@ -72,14 +70,34 @@ function Portfolio() {
       try {
         const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/crypto/explore?limit=100`);
         const data = res.data.cryptos;
-        setCryptos(data);
+        const tempData = []
+        data.map((item, index) => {
+          if (assets[item.symbol]>0){
+            var price = item.price.toString().split(".")[0] +"." + item.price.toString().split(".")[1].substring(0,2)
+            var percent =  (((parseFloat(assetsPrice[item.symbol]) - parseFloat(item.price)* parseFloat(assets[item.symbol])))/parseFloat(price* assets[item.symbol])*100).toString()
+          
+            console.log(percent)
+            
+            const temp = {
+              symbol: item.symbol,
+              supply: assets[item.symbol],
+              price: price,
+              volumn: price* assets[item.symbol],
+              volumnP: percent.split(".")[0] + "." + percent.split(".")[1].substring(0, 2)+ "%"
+            }
+            console.log(temp);
+            tempData.push(temp)
+          }
+          
+        })
+        setCryptos(tempData);
       } catch (err) {
         console.log('Error fetching cryptos');
         console.log(err);
       }
     }
     getCryptos();
-  }, []);
+  }, [assetsPrice]);
 
   useEffect(() => {
     setSymbols(Object.keys(assets));
@@ -150,7 +168,7 @@ function Portfolio() {
                     <TableCell align="center">Quantity</TableCell>
                     <TableCell align="center">Market Price</TableCell>
                     <TableCell align="center">Total Value</TableCell>
-                    <TableCell align="center">Total Value(%)</TableCell>
+                    <TableCell align="center">Profit/Loss(%)</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -166,11 +184,21 @@ function Portfolio() {
                         {item.price}
                       </TableCell>
                       <TableCell align='center'>
-                        {item.volume}
+                        {item.volumn}
                       </TableCell>
-                      <TableCell align='center'>
-                        {item.volumeP}
-                      </TableCell>
+                      {
+                       parseInt(item.volumeP)>0 ? (
+                          <TableCell align='center' className="green">
+                            {item.volumnP}
+                          </TableCell>
+                        ):
+                        (
+                          <TableCell align='center' className="red">
+                            {item.volumnP}
+                          </TableCell>
+                        )
+                      }
+                      
                     </TableRow>
                   ))}
                 </TableBody>
