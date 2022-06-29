@@ -210,7 +210,7 @@ function Portfolio() {
 
           <Grid item xs={12}>
             <Typography variant='h5' textAlign={'center'}>
-              Stock Graph
+              Currency Graph
             </Typography>
           </Grid>
 
