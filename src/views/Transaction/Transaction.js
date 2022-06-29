@@ -10,6 +10,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import axios from 'axios';
+import Link from '@mui/material/Link';
 
 function Transaction() {
   let navigate = useNavigate();
@@ -56,10 +57,11 @@ function Transaction() {
                   data.length>0 && data.map((item, i) => (
                     <TableRow key={i}>
                       <TableCell align='center'>
-                        {item.date}
+                        {item.date.substring(5,7)+ "/" + item.date.substring(8,10)+ "/" + item.date.substring(0, 4) + " " + item.date.substring(11, 19)}
                       </TableCell>
                       <TableCell align='center'>
-                        {item.symbol}
+                      <Link href={`/crypto/${item.symbol}`}>{item.symbol}</Link>
+                        {/* {item.symbol} */}
                       </TableCell>
                       <TableCell align='center'>
                         {item.amount}
