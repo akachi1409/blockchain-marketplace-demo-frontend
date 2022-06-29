@@ -9,29 +9,26 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import axios from 'axios';
 
 function Transaction() {
   let navigate = useNavigate();
   let [ data, setData ] = useState([])
   let [ firstLoad, setFirstLoad] = useState(true)
+  const authHeader = {Authorization: `JWT ${localStorage.getItem('token')}`};
 
   useEffect(() =>{
-    if (firstLoad){
-        var tempData = [];
-        for (var i = 0 ; i<10; i++){
-            var temp = {
-                date: new Date() - Math.random(),
-                symbol : "BTC",
-                quantity: 1,
-                buyingPrice: 3000,
-            }
-            tempData.push(temp);
-        }
-        console.log(tempData);
-        setData(tempData)
+    async function getHistory(){
+      if (firstLoad){
+        const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/history`, {headers: authHeader});
+        const history = res.data;
+        console.log("data", history)
+        setData(history.historys);
         setFirstLoad(false);
-    } 
-  })
+      }
+    }
+    getHistory();
+  },[firstLoad])
   return (
     <>
       <div id="page-title">
@@ -51,6 +48,7 @@ function Transaction() {
                     <TableCell align="center">Cryptocurrency</TableCell>
                     <TableCell align="center">Quantity</TableCell>
                     <TableCell align="center">Buying Price</TableCell>
+                    <TableCell align="center">Action</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -64,10 +62,13 @@ function Transaction() {
                         {item.symbol}
                       </TableCell>
                       <TableCell align='center'>
-                        {item.quantity}
+                        {item.amount}
                       </TableCell>
                       <TableCell align='center'>
-                        {item.buyingPrice}
+                        {item.price}
+                      </TableCell>
+                      <TableCell align='center'>
+                        {item.action}
                       </TableCell>
                     </TableRow>
                   ))}

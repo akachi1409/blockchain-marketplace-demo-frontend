@@ -31,7 +31,7 @@ function Home() {
   useEffect(() => {
     async function getAllocations() {
       const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/assets`, {headers: authHeader});
-      const data = res.data.assets;
+      const data = res.data.assetsPrice;
 
       const isEmpty = Object.keys(data).length === 0;
       if (isEmpty) {
