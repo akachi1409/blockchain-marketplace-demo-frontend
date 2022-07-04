@@ -13,12 +13,12 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
-// import Button from '@mui/material/Button';
-// import Dialog from '@mui/material/Dialog';
-// import DialogActions from '@mui/material/DialogActions';
-// import DialogContent from '@mui/material/DialogContent';
-// import DialogContentText from '@mui/material/DialogContentText';
-// import DialogTitle from '@mui/material/DialogTitle';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 import { useNavigate } from 'react-router-dom';
 import {
   LineChart,
@@ -137,28 +137,17 @@ function Portfolio() {
 
       <div id="page-content">
         <Grid container spacing={2}>
-
-          {/* <Grid item xs={12}>
-            <Typography variant='h5' textAlign={'center'}>
-              My Assets
-            </Typography>
-          </Grid> */}
-
-          {/* <Dialog open={emptyAssetDialogBox}>
-          <DialogTitle> Please Add Assets </DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              Please add assets into your crypto portfolio. Empty portfolios limit the functionality of MyCryptoPal. 
-              Certain features are disabled if there are no assets present. Thank you.
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={() => navigate('/explore')}>Explore Crypto</Button>
-          </DialogActions>
-        </Dialog> */}
-
-          {/* <Grid item xs={0} md={3}/> */}
-
+          <Dialog open={emptyAssetDialogBox} className="text-center">
+            <DialogTitle> Welcome to My Crypto Pal </DialogTitle>
+            <DialogContent>
+              <DialogContentText>
+              Hi there! My name is Vishal Chugani and I am the founder of My Crypto Pal. Thank you so much for joining our platform! My Crypto Pal is your soon to be best friend that will answer all crypto related questions and even allow you to mock invest in the space! As a new user, we will grant you $2,000 to start your portfolio with any cryptocurrency you like! To have a larger allowance, we encourage you to complete our lessons and quizzes. Are you ready to start investing like Elon Musk? Click on and enjoy your relationship with My Crypto Pal!
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={() => navigate('/explore')}>Explore Crypto</Button>
+            </DialogActions>
+          </Dialog>
           <Grid item xs={12} md={12}>
             <TableContainer component={Paper}>
               <Table sx={{minWidth: 650}} aria-label="simple table">
@@ -205,9 +194,6 @@ function Portfolio() {
               </Table>
             </TableContainer>
           </Grid>
-
-          {/* <Grid item xs={0} md={3}/> */}
-
           <Grid item xs={12}>
             <Typography variant='h5' textAlign={'center'}>
               Currency Graph
