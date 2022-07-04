@@ -34,7 +34,7 @@ function Transaction() {
     <>
       <div id="page-title">
         <Typography variant="h4" fontWeight={"bold"}>
-          Transaction
+        Transaction History
         </Typography>
       </div>
 
@@ -67,7 +67,7 @@ function Transaction() {
                         {item.amount}
                       </TableCell>
                       <TableCell align='center'>
-                        {item.price}
+                        {item.price.toString().split(".")[0]+"." + item.price.toString().split(".")[1].substring(0,2)}
                       </TableCell>
                       <TableCell align='center'>
                         {item.action}
