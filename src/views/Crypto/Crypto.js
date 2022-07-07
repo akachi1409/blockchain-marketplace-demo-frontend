@@ -238,7 +238,7 @@ function Crypto() {
                         </Grid>
                       </Grid>
 
-                      <Grid item xs={4} id="crypto-buttons" textAlign={'center'}>
+                      {/* <Grid item xs={4} id="crypto-buttons" textAlign={'center'}>
                         <Grid container>
                           <Grid item xs={6}>
                             <Button variant="contained" className="cryptoButtons" onClick={handleAddDialogOpen}>
@@ -252,7 +252,7 @@ function Crypto() {
                             </Button>
                           </Grid>
                         </Grid>
-                      </Grid>
+                      </Grid> */}
                     </Grid>
                   </Grid>
                 </Grid>

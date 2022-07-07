@@ -1,0 +1,25 @@
+.exploreCard{
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    background-color:grey;
+    border-radius: 16px;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+
+.cardTitle {
+    text-align: center;
+}
+
+.cardImage img {
+    width: 100%;
+    margin-right: auto;
+    vertical-align: middle;
+}
+
+.exploreCard:hover {
+    background-color: #d9dbd3;
+    color: rgb(62, 62, 62);
+}

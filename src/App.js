@@ -9,6 +9,8 @@ import Settings from './views/Settings/Settings';
 import Crypto from './views/Crypto/Crypto';
 import Lesson from './views/Lesson/Lesson';
 import Transaction from "./views/Transaction/Transaction";
+import Trade from "./views/Trade/Trade";
+import Margin from "./views/Margin/Margin"
 import NotFound from './views/NotFound/NotFound';
 // Components
 import Sidebar from './components/Sidebar/Sidebar';
@@ -33,7 +35,8 @@ function App() {
           <Route path='/crypto/:symbol' element={<Crypto />} />
           <Route path='/learn/id/:lessonId' element={<Lesson />} />
           <Route path="/transaction" element={<Transaction />} />
-          
+          <Route path='/trade' element={<Trade />} />
+          <Route path='/trade/:symbol' element={<Margin />}/>
           <Route path='*' element={<NotFound />} />
         </Routes>
       </div>
