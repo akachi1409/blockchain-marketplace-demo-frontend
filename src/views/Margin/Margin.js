@@ -651,7 +651,7 @@ function Margin() {
         </Box>
 
         <Dialog open={dropDialogOpen} onClose={handleDropDialogClose}>
-          <DialogTitle>Drop {coinData.symbol} </DialogTitle>
+          <DialogTitle>Sell {coinData.symbol} </DialogTitle>
           <DialogContent>
             <DialogContentText>
               You currently have {ownedAmount} {coinData.symbol}. Your changes will be reflected in your
@@ -675,11 +675,10 @@ function Margin() {
         </Dialog>
 
         <Dialog open={addDialogOpen} onClose={handleAddDialogClose}>
-          <DialogTitle>Add {coinData.symbol} </DialogTitle>
+          <DialogTitle>Buy {coinData.symbol} </DialogTitle>
           <DialogContent>
             <DialogContentText>
-              You currently have {ownedAmount} {coinData.symbol}. Your changes will be reflected in your
-              allocation pie chart.
+              You currently have {ownedAmount} {coinData.symbol}. Your changes will be reflected in your portfolio.
             </DialogContentText>
             <TextField
               autoFocus
