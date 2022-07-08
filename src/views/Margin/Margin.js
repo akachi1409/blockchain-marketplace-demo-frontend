@@ -298,35 +298,6 @@ function Margin() {
                           </Grid>
                         </Grid>
                       </Grid>
-
-                      {/* <Grid
-                        item
-                        xs={4}
-                        id="crypto-buttons"
-                        textAlign={"center"}
-                      >
-                        <Grid container>
-                          <Grid item xs={6}>
-                            <Button
-                              variant="contained"
-                              className="cryptoButtons"
-                              onClick={handleAddDialogOpen}
-                            >
-                              Add
-                            </Button>
-                          </Grid>
-
-                          <Grid item xs={6}>
-                            <Button
-                              variant="outlined"
-                              className="cryptoButtons"
-                              onClick={handleDropDialogOpen}
-                            >
-                              Drop
-                            </Button>
-                          </Grid>
-                        </Grid>
-                      </Grid> */}
                     </Grid>
                   </Grid>
                 </Grid>
