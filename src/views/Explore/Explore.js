@@ -19,7 +19,9 @@ function Explore() {
   const [cryptos, setCryptos] = useState([]);
   const [selected, setSelected] = useState('');
   const [open, setOpen] = useState(false);
-
+  const [balance, setBalance] = useState(0)
+  const authHeader = {Authorization: `JWT ${localStorage.getItem('token')}`};
+  
   useEffect(() => {
     async function getCryptos() {
       try {
@@ -33,6 +35,15 @@ function Explore() {
     }
     getCryptos();
   }, []);
+
+  useEffect(()=>{
+    async function getBalance () {
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/balance`, {headers: authHeader});
+      const data = res.data;
+      setBalance(data.balance)
+    }
+    getBalance();
+  },[])
 
   function handleAlertClose(evt, reason) {
     if (reason === 'clickaway') {
@@ -59,6 +70,7 @@ function Explore() {
     <>
       <div id="page-title">
         <Typography variant='h4' fontWeight={'bold'}>Explore</Typography>
+        <Typography variant='h6' fontWeight={'light'} className="page-balance">Balance: {balance}</Typography>
       </div>
 
       <div id="page-content">

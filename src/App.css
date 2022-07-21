@@ -1,9 +1,9 @@
 #page-title {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   height: 10vh;
   text-align: center;
-  position: fixed;
+  position: absolute;
   width: 100%;
   z-index: 1;
   background-color: #383c47;
@@ -13,6 +13,7 @@
   font-weight: bold;
   justify-content: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding-bottom: 5px;
 }
 
 #page-content {
@@ -26,7 +27,11 @@
   overflow: auto;
   overflow-x: hidden;
 }
-
+.page-balance{
+ text-align: right;
+ position: absolute;
+ right: 100px;
+}
 .page-button {
   min-width: 300px;
   max-width: 400px;

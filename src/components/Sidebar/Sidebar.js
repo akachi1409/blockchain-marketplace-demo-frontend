@@ -73,16 +73,16 @@ function Sidebar() {
         </Grid>
       </Grid>
 
-      <Grid id="settings" className="menu-item" >
-        <Grid container spacing={1} onClick={() => navigate('/settings')}>
+      <Grid id="trade" className="menu-item" >
+        <Grid container spacing={1} onClick={() => navigate('/trade')}>
           <Grid item>
-            <SettingsIcon />
+            <MonetizationOnIcon />
           </Grid>
           <Grid item>
-            <Typography variant='body1' className="subItem">Settings</Typography>
+            <Typography variant='body1' className="subItem">Trade</Typography>
           </Grid>
         </Grid>
-      </Grid>    
+      </Grid>  
 
       <Grid id="transaction" className="menu-item" >
         <Grid container spacing={1} onClick={() => navigate('/transaction')}>
@@ -95,16 +95,16 @@ function Sidebar() {
         </Grid>
       </Grid> 
 
-      <Grid id="trade" className="menu-item" >
-        <Grid container spacing={1} onClick={() => navigate('/trade')}>
+      <Grid id="settings" className="menu-item" >
+        <Grid container spacing={1} onClick={() => navigate('/settings')}>
           <Grid item>
-            <MonetizationOnIcon />
+            <SettingsIcon />
           </Grid>
           <Grid item>
-            <Typography variant='body1' className="subItem">Trade</Typography>
+            <Typography variant='body1' className="subItem">Settings</Typography>
           </Grid>
         </Grid>
-      </Grid>     
+      </Grid>    
 
       <Grid id="logout" className="menu-item" >
         <Grid container spacing={1} onClick={() => {

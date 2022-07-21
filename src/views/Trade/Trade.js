@@ -18,6 +18,9 @@ function Trade() {
   const [cryptos, setCryptos] = useState([]);
   const [selected, setSelected] = useState('');
   const [open, setOpen] = useState(false);
+  const [balance, setBalance] = useState(0)
+  const authHeader = {Authorization: `JWT ${localStorage.getItem('token')}`};
+
   function handleSearch() {
     if (selected) {
       navigate(`/crypto/${selected}`);
@@ -47,6 +50,7 @@ function Trade() {
         <Typography variant="h4" fontWeight={"bold"}>
           Trade
         </Typography>
+        <Typography variant='h6' fontWeight={'light'} className="page-balance">Balance: {balance}</Typography>
       </div>
       <div id="page-content">
         <Grid container spacing={4}>

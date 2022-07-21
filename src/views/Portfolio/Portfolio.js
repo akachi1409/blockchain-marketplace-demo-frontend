@@ -44,6 +44,7 @@ function Portfolio() {
   const [minTick, setMinTick] = useState(0);
   const [maxTick, setMaxTick] = useState(0);
   const [emptyAssetDialogBox, setEmptyAssetDialogBox] = useState(false);
+  const [balance, setBalance] = useState(0)
   const authHeader = {Authorization: `JWT ${localStorage.getItem('token')}`};
   let navigate = useNavigate();
 
@@ -64,6 +65,15 @@ function Portfolio() {
     }
     getAssets();
   }, []);
+
+  useEffect(()=>{
+    async function getBalance () {
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/balance`, {headers: authHeader});
+      const data = res.data;
+      setBalance(data.balance)
+    }
+    getBalance();
+  },[])
 
   useEffect(() => {
     async function getCryptos() {
@@ -133,6 +143,7 @@ function Portfolio() {
     <>
       <div id="page-title">
         <Typography variant='h4' fontWeight={'bold'}>My Portfolio</Typography>
+        <Typography variant='h6' fontWeight={'light'} className="page-balance">Balance: {balance}</Typography>
       </div>
 
       <div id="page-content">
