@@ -4,10 +4,13 @@ import LessonCircle from '../../components/LessonCircle/LessonCircle';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import axios from 'axios';
 
 function Learn() {
   const [lessonCount, setLessonCount] = useState(0);
   const [lessons, setLessons] = useState([]);
+  const [balance, setBalance] = useState(0)
+  const authHeader = {Authorization: `JWT ${localStorage.getItem('token')}`};
 
   function generateLessonGrid(grid, lessons, spacing, xs, marginBottom) {
     let min = 0; let max;
@@ -48,10 +51,20 @@ function Learn() {
     setLessons(lessons);
   }, [lessonCount]);
 
+  useEffect(()=>{
+    async function getBalance () {
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/balance`, {headers: authHeader});
+      const data = res.data;
+      setBalance(data.balance)
+    }
+    getBalance();
+  },[])
+
   return (
     <>
       <div id="page-title">
         <Typography variant='h4' fontWeight={'bold'}>Learn</Typography>
+        <Typography variant='h6' fontWeight={'light'} className="page-balance">Balance: {balance.toFixed(2)+ "$"}</Typography>
       </div>
 
       <div id="page-content">

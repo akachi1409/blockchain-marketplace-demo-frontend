@@ -31,6 +31,7 @@ function LessonQuiz(props) {
   async function getProgress() {
     const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/progress/${props.lessonId}`, {headers: authHeader});
     const data = res.data;
+    console.log("quiz", data);
     setProgress(data.progress);
   }
 

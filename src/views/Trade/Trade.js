@@ -44,13 +44,22 @@ function Trade() {
     getCryptos();
   }, []);
 
+  useEffect(()=>{
+    async function getBalance () {
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/balance`, {headers: authHeader});
+      const data = res.data;
+      setBalance(data.balance)
+    }
+    getBalance();
+  },[])
+
   return (
     <>
       <div id="page-title">
         <Typography variant="h4" fontWeight={"bold"}>
           Trade
         </Typography>
-        <Typography variant='h6' fontWeight={'light'} className="page-balance">Balance: {balance}</Typography>
+        <Typography variant='h6' fontWeight={'light'} className="page-balance">Balance: {balance.toFixed(2)+ "$"}</Typography>
       </div>
       <div id="page-content">
         <Grid container spacing={4}>
