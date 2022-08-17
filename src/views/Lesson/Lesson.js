@@ -45,7 +45,7 @@ function Lesson() {
     <>
       <div id="page-title">
         <Typography variant='h4' fontWeight={'bold'}>Lesson</Typography>
-        <Typography variant='h6' fontWeight={'light'} className="page-balance">Balance: {balance.toFixed(2)+ "$"}</Typography>
+        <Typography variant='h6' fontWeight={'light'} className="page-balance">Balance: {"$" + balance.toFixed(2) }</Typography>
       </div>
       <div id="page-content">
         <Stack id="lesson-body">
