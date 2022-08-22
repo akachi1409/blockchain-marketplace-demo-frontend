@@ -51,6 +51,7 @@ function Home() {
   const [price, setPrice] = useState(0);
   const [lastPrice, setLastPrice] = useState(0);
   const [rate, setRate] = useState(0);
+  const [balance, setBalance] = useState(0)
   let navigate = useNavigate();
 
   // API call for mock asset allocation data
@@ -162,12 +163,22 @@ function Home() {
     setColors(randomColors);
   }, [allocations]);
 
+  useEffect(()=>{
+    async function getBalance () {
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/balance`, {headers: authHeader});
+      const data = res.data;
+      setBalance(data.balance)
+    }
+    getBalance();
+  },[])
+
   return (
     <>
       <div id="page-title">
         <Typography variant="h4" fontWeight={"bold"}>
           Home
         </Typography>
+        <Typography variant='h6' fontWeight={'light'} className="page-balance">Balance: {"$" + balance.toFixed(2) }</Typography>
       </div>
       <div id="page-content">
         <div id="chart">
