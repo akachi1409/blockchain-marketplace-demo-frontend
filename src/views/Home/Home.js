@@ -246,7 +246,7 @@ function Home() {
               Crypto Pal. Thank you so much for joining our platform! My Crypto
               Pal is your soon to be best friend that will answer all crypto
               related questions and even allow you to mock invest in the space!
-              As a new user, we will grant you $2,000 to start your portfolio
+              As a new user, we will grant you $10,000 to start your portfolio
               with any cryptocurrency you like! To have a larger allowance, we
               encourage you to complete our lessons and quizzes. Are you ready
               to start investing like Elon Musk? Click on and enjoy your
