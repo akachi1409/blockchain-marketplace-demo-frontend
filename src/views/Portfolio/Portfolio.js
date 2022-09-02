@@ -84,10 +84,19 @@ function Portfolio() {
         data.map((item, index) => {
           if (assets[item.symbol]>0){
             var price = item.price.toString().split(".")[0] +"." + item.price.toString().split(".")[1].substring(0,2)
-            var percent =  (((parseFloat(assetsPrice[item.symbol]) - parseFloat(item.price)* parseFloat(assets[item.symbol])))/parseFloat(price* assets[item.symbol])*100).toString()
+            var percent =  ((
+              (parseFloat(assetsPrice[item.symbol]) - parseFloat(item.price)* parseFloat(assets[item.symbol])))
+              /parseFloat(price* assets[item.symbol])*100
+              ).toString()
           
             console.log(percent)
-            
+            var volumnP;
+            if (percent === 0){
+              volumnP = "0%";
+            }
+            else{
+              volumnP= percent.split(".")[0] + "." + percent.split(".")[1].substring(0, 2)+ "%"
+            }
             const temp = {
               symbol: item.symbol,
               supply: assets[item.symbol],
